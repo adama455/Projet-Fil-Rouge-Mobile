@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { DetailProductComponent } from './catalogue/detail-product/detail-product.component';
+import { AuthGuard } from './connexion/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   },
   {
     path: 'catalogue',
-    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule)
+    loadChildren: () => import('./catalogue/catalogue.module').then( m => m.CataloguePageModule),
+    canActivate: [AuthGuard],
   },
   {
     path: 'produit/:id',

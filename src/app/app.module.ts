@@ -10,7 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 import { FooterComponent } from './composants/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ConnexionPageModule } from './connexion/connexion.module';
+import { IonicStorageModule } from '@ionic/storage-angular';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +24,7 @@ import { ConnexionPageModule } from './connexion/connexion.module';
     IonicHeaderParallaxModule,
     FormsModule,
     ReactiveFormsModule,
+    IonicStorageModule.forRoot()
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

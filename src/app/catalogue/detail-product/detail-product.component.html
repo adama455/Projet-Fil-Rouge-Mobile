@@ -1,57 +1,62 @@
-<div class="card card-card grand-card w-75 m-auto">
-  <div class="header border">
-    <i class="fa-solid fs-3 fa-arrow-left position-absolute" routerLink="/catalogue"></i>
-    <div class="title d-flex justify-content-between mx-4 pt-3">
-      <h5 class="card-title fs-4 mt-2 fw-bold ms-5">
-        DETAILS: {{ showTitle(produit)}}
-      </h5>
-      <span class="badge rounded-pill d-flex align-items-center justify-content-center panier text-white py-2 fw-bold px-5"
-          
-          (click)="addMenuToCart(produit)">
-          <i class="fas fa-shopping-cart fs-4 "></i>
-          +panier
-      </span>
-    </div>
-    <hr class="line" />
-    <section class="card-body w-100 section-details">
-      <div class="d-flex  decrip-img justify-content-between ">
-        <div class="show-detail d-flex h-25" style="width: 65%;height: 552px">
-          <div class="descrip col-md-6 col-sm-3 p-3">
-            <h3 class="fw-bold">{{ produit.nom }}</h3>
-            <p class="text-wrap">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
-              et sint maxime repudiandae. Optio, tenetur aliquid adipisci commodi
-              consequuntur minima mollitia quas iusto ducimus. Explicabo
-              exercitationem molestias cum reiciendis non?
-            </p>
-            <div class=" d-flex flex-column ">
-              <h2>Compositon du menu:</h2>
-              <h4 *ngFor="let oburger of burgers">{{oburger.quatite}}. --- {{oburger.burger.nom}} ---- {{oburger.burger.prix}}/Unité</h4>
-              <h4 *ngFor="let ofrite of frites">{{ofrite.quantite}}. --- {{ofrite.frite.nom}} ----- {{ofrite.frite.prix}}/Unité</h4>
-            </div>
-            <span class="fw-bold fs-2 total">Total: {{ produit.prix }} F CFA</span>
-          </div>
-          
-          <div class="image mx-5 col-md-6 col-sm-3 card justify-content-center" style="height: 552px">
-            <img [src]="convert(produit.image)" class="col-md-12 d-flex" />
-          </div>
-        </div>
+<ion-header>
+  <ion-toolbar>
+    <ion-back-button text="back" defaultHref="home"></ion-back-button>
+  </ion-toolbar>
+</ion-header>
 
-        <div class="btn-cmd-burger col-md-4 col-sm-2 d-flex align-items-end border"style="height: 553px">
-          <div class="btn-cmd">
-            <button type="button" class="cmde btn-rounded rounded-5">
-              <div class="">
-                <span class="text-white fw-bold">VOUS LE VOULEZ ? C’EST PAR ICI !</span>
-                <span><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i></span>
-              </div>
-              <button class="btn btn-light btn-rounded rounded-4">
-                CLICKER ICI & COMMANDER
-              </button>
-            </button> 
-          </div>
-          <div class="card bg-danger"> 
+  <div class="card card-card grand-card w-75 m-auto">
+    <div class="header border">
+      <i class="fa-solid fs-3 fa-arrow-left position-absolute" routerLink="/catalogue"></i>
+      <div class="title d-flex justify-content-between mx-4 pt-3">
+        <h5 class="card-title fs-4 mt-2 fw-bold ms-5">
+          DETAILS: {{ showTitle(produit)}}
+        </h5>
+        <span class="badge rounded-pill d-flex align-items-center justify-content-center panier text-white py-2 fw-bold px-5"
+            
+            (click)="addMenuToCart(produit)">
+            <i class="fas fa-shopping-cart fs-4 "></i>
+            +panier
+        </span>
       </div>
+      <hr class="line" />
+      <section class="card-body w-100 section-details">
+        <div class="d-flex  decrip-img justify-content-between ">
+          <div class="show-detail d-flex h-25" style="width: 65%;height: 552px">
+            <div class="descrip col-md-6 col-sm-3 p-3">
+              <h3 class="fw-bold">{{ produit.nom }}</h3>
+              <p class="text-wrap">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eligendi
+                et sint maxime repudiandae. Optio, tenetur aliquid adipisci commodi
+                consequuntur minima mollitia quas iusto ducimus. Explicabo
+                exercitationem molestias cum reiciendis non?
+              </p>
+              <div class=" d-flex flex-column ">
+                <h2>Compositon du menu:</h2>
+                <h4 *ngFor="let oburger of burgers">{{oburger.quatite}}. --- {{oburger.burger.nom}} ---- {{oburger.burger.prix}}/Unité</h4>
+                <h4 *ngFor="let ofrite of frites">{{ofrite.quantite}}. --- {{ofrite.frite.nom}} ----- {{ofrite.frite.prix}}/Unité</h4>
+              </div>
+              <span class="fw-bold fs-2 total">Total: {{ produit.prix }} F CFA</span>
+            </div>
+            
+            <div class="image mx-5 col-md-6 col-sm-3 card justify-content-center" style="height: 552px">
+              <img [src]="convert(produit.image)" class="col-md-12 d-flex" />
+            </div>
+          </div>
 
+          <div class="btn-cmd-burger col-md-4 col-sm-2 d-flex align-items-end border"style="height: 553px">
+            <div class="btn-cmd">
+              <button type="button" class="cmde btn-rounded rounded-5">
+                <div class="">
+                  <span class="text-white fw-bold">VOUS LE VOULEZ ? C’EST PAR ICI !</span>
+                  <span><i class="fas fa-long-arrow-alt-right text-white fs-3 ms-2"></i></span>
+                </div>
+                <button class="btn btn-light btn-rounded rounded-4">
+                  CLICKER ICI & COMMANDER
+                </button>
+              </button> 
+            </div>
+          </div> 
+        </div>
+      </section>
+    </div> 
   </div>
-  
-</div>

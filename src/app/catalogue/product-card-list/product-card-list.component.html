@@ -44,7 +44,7 @@
 
 <!-- List of Text Items -->
 <ion-list inset="false"  class="list ion-padding">
-  <ion-item  lines="full" button (click)="detailProduit()">
+  <ion-item button detail lines="full" (click)="showDetails()" >
     <ion-avatar slot="start">
       <img
             [src]="convert(catalogue.image)"

@@ -8,7 +8,6 @@ import { ConnexionPageRoutingModule } from './connexion-routing.module';
 
 import { ConnexionPage } from './connexion.page';
 import { LoginComponent } from './login/login.component';
-
 @NgModule({
   imports: [
     CommonModule,

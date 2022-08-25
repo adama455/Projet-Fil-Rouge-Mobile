@@ -19,8 +19,9 @@ export class ProductCardListComponent implements OnInit {
 
   ngOnInit() {}
 
-  detailProduit(){
-    
+  showDetails(){
+    alert("ok");
+    this.route.navigateByUrl(`produit/${this.catalogue.id}`)
   }
   convert(url: string){
     return this.data.convertImg(url)
