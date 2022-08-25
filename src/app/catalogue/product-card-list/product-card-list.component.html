@@ -1,0 +1,62 @@
+<!--
+
+  <div class="card left-card mb-2 position-relative fs-6" >
+  <div class="col-5">
+    <div class="info no-gutters">
+      <div class="column-img mt-3">
+        <img
+          [src]="convert(catalogue.image)"
+          class="card-img"
+          titlealt="..."
+        />
+      </div>
+      
+      <div class="card-body content">
+        <h5 class="card-title fw-bold">{{ catalogue.nom }}</h5>
+        <p>Prix: {{ catalogue.prix }} F</p>
+      </div>
+      <div class="icon-row">
+        <ion-icon name="chevron-forward-outline"></ion-icon>
+      </div>  
+    </div>
+  </div> 
+
+
+  <ion-list lines="inset">
+    <ion-item>
+      <div class="info no-gutters">
+        <div class="column-img mt-3">
+          <img
+            [src]="convert(catalogue.image)"
+            class="card-img"
+            titlealt="..."
+          />
+        </div>
+        
+        <div class="card-body content">
+          <h5 class="card-title fw-bold">{{ catalogue.nom }}</h5>
+          <p>Prix: {{ catalogue.prix }} F</p>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+--> 
+
+<!-- List of Text Items -->
+<ion-list inset="false"  class="list ion-padding">
+  <ion-item  lines="full" button (click)="detailProduit()">
+    <ion-avatar slot="start">
+      <img
+            [src]="convert(catalogue.image)"
+            class="card-img"
+            titlealt="..."
+          />
+    </ion-avatar>
+    <ion-label >
+      <h2><b>{{ catalogue.nom }}</b></h2>
+      <h3><em> Prix: {{ catalogue.prix }}</em> </h3>
+      <p>Listen, I've had a pretty messed up day...</p>
+    </ion-label>
+
+  </ion-item>
+</ion-list>

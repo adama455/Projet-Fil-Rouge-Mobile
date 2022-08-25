@@ -1,0 +1,41 @@
+.left-card{
+    border-top: none ;
+    border-right: none;
+    border-left: none;
+    border-bottom: 0.5px solid gainsboro;
+    border-radius: 0;
+    height: 12vh;
+}
+.column-img{
+    // border: 1px red solid;
+    width: 20%;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+.info{
+    display: flex;
+    justify-content: space-between;
+    height: 10vh;
+    margin: 2% ;
+
+}
+.content{
+    width: 60%;
+    // border: 1px blue solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+}
+.icon-row{
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    justify-content: flex-end;
+    width: 5rem;
+}
+// .list{
+//     border: 2px solid red;
+//     margin-right: 1rem;
+//     width: 100%;
+// }

@@ -1,0 +1,62 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" defaultHref="home"></ion-back-button>
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Menu</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <ion-header parallax
+    imageUrl="https://media.gqmagazine.fr/photos/5f7435372a7b0a4f7f543cf9/3:2/w_1350,h_900,c_limit/Burger%20King-chevre.jpg"
+    height="300" bgPosition="top">
+    <ion-toolbar color="primary">
+      <ion-title> Brazil Burger</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <div class="cata">
+      <ion-segment class="cata" value="grid" (ionChange)="segmentValue($event)" class="segment-btn">
+        <ion-segment-button value="grid">
+          <ion-icon name="grid-outline"></ion-icon>
+        </ion-segment-button>
+        <ion-segment-button value="list">
+          <ion-icon name="list-outline" routerLink=""></ion-icon>
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <div class="contenent" *ngIf="valueSegment!=='list'">
+
+      <h2 class="burger">MES BURGERS:</h2>
+      <div class="row d-flex g-5">
+        <app-product-card-grid *ngFor="let burger of burgers " [produit]="burger" class="col col-sm-4 col-md-3">
+        </app-product-card-grid>
+      </div>
+      <h2 class="menu">MES MENUS:</h2>
+      <div class="row d-flex g-5">
+        <app-product-card-grid *ngFor="let menu of menus " [produit]="menu" class="col col-sm-4 col-md-3">
+        </app-product-card-grid>
+      </div>
+    </div>
+
+    <div class="contenent" *ngIf="valueSegment==='list'">
+      <h2 class="burger">MES BURGERS:</h2>
+      <div class=" bb">
+        <app-product-card-list *ngFor="let burger of burgers " [catalogue]="burger" class="burger-list">
+        </app-product-card-list>
+      </div>
+
+      <h2 class="menu">MES MENUS:</h2>
+      <div class="row d-flex g-5">
+        <app-product-card-list *ngFor="let menu of menus " [catalogue]="menu" class="col col-sm-4 col-md-3">
+        </app-product-card-list>
+      </div>
+
+    </div>
+  </ion-content>
+  </ion-content>

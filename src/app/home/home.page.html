@@ -1,20 +1,43 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar color="primary">
     <ion-title>
-      Blank
+      Brazil Burger
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content [fullscreen]="true" class="ion-padding" scroll-y="false">
+  
+   
+  
+  <ion-slides pager="true">
+    <ion-slide>
+      <h1 class="ion-text-center">BIENVENUE</h1>
+      <div class="slide">
+        <img
+          src="https://media.gqmagazine.fr/photos/5f7435372a7b0a4f7f543cf9/3:2/w_1350,h_900,c_limit/Burger%20King-chevre.jpg"
+          alt="" >
+        <h2>Welcome</h2>
+        <p>
+          The <b>ionic conference app</b> 
+        </p>
+      </div>
+    </ion-slide>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+    <ion-slide>
+      <ion-app>
+        <app-login></app-login>
+
+      </ion-app>
+      
+
+    </ion-slide>
+
+    <!--<ion-slide>
+      <ion-app>
+        <app-main-menu></app-main-menu>
+      </ion-app>
+    </ion-slide>-->
+
+  </ion-slides>
 </ion-content>
