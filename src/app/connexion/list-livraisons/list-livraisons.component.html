@@ -1,3 +1,14 @@
-<p>
-  list-livraisons works!
-</p>
+<div class="bar bar-header bar-positive">
+  <h1 class="title ion-text-center" >Mes livraisons</h1>
+</div>
+<ion-content>
+  <ion-list inset="false"  class="list ion-padding" *ngFor="let mesLiv of livraisonLivreur; let i=index">
+    <ion-item button detail lines="full" (click)="detailLivraison(mesLiv)">
+      <ion-label >
+        <h3> Livraison N°: <em> {{mesLiv.numero}}</em></h3>
+        <p>Listen, I've had a pretty messed up day...</p>
+      </ion-label>
+  
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -9,16 +9,29 @@ import { AuthService } from '../services/auth.service';
 })
 export class ListLivraisonsComponent implements OnInit {
   livreur:any
+  livraisons:any[]
+  livraisonLivreur:any[]=[]
+  emailLivreurConnect:any=this.authService.getToken().username;
   constructor(private authService:AuthService, private router:Router) { }
 
   ngOnInit() {
-    // console.log(this.authService.getToken().username); //recuperation du login  du liveur connecter
-    let login = this.authService.getToken().username;
-    this.authService.getUser(login).subscribe(liv=>{
-      this.livreur =liv;
-      console.log(this.livreur.livaisons);
+    this.authService.getLivraisonsObs().subscribe(livraison=>{
+      // console.log(livraison);
+      this.livraisons=livraison;
+      this.livraisons.forEach((oneLiv:any)=>{
+      console.log(oneLiv.livreur.login);
+      // console.log(this.emailLivreurConnect);
+        if (oneLiv.livreur.login ==this.emailLivreurConnect) {
+          this.livraisonLivreur.push(oneLiv);
+          console.log(this.livraisonLivreur)
+        }
+      })
+      
     })
     
+  }
+  detailLivraison(oneLivraison){
+    this.router.navigateByUrl('livraison/'+ oneLivraison.id)
   }
 
 }

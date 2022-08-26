@@ -53,30 +53,30 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  async loginn() {
-    const loading = await this.loadingController.create();
-    await loading.present();
+  // async loginn() {
+  //   const loading = await this.loadingController.create();
+  //   await loading.present();
     
-    this.authService.login(this.myForm.value).subscribe(
-      async (res) => {
-        console.log(this.email.value);
-        await loading.dismiss();  
+  //   this.authService.login(this.myForm.value).subscribe(
+  //     async (res) => {
+  //       console.log(this.email.value);
+  //       await loading.dismiss();  
               
-        // this.router.navigateByUrl('catalogue', { replaceUrl: true });
-      },
-      async (res) => {
-        await loading.dismiss();
-        const alert = await this.alertCtrl.create({
-          header: 'Login failed',
-          message: res.error.error,
-          buttons: ['OK'],
-        });
+  //       // this.router.navigateByUrl('catalogue', { replaceUrl: true });
+  //     },
+  //     async (res) => {
+  //       await loading.dismiss();
+  //       const alert = await this.alertCtrl.create({
+  //         header: 'Login failed',
+  //         message: res.error.error,
+  //         buttons: ['OK'],
+  //       });
  
-        await alert.present();
-      }
-    );
+  //       await alert.present();
+  //     }
+  //   );
 
-  }
+  // }
 
   // Easy access for form fields
   get email() {

@@ -9,6 +9,7 @@ import { ConnexionPageRoutingModule } from './connexion-routing.module';
 import { ConnexionPage } from './connexion.page';
 import { LoginComponent } from './login/login.component';
 import { ListLivraisonsComponent } from './list-livraisons/list-livraisons.component';
+import { DetailLivraisonComponent } from './detail-livraison/detail-livraison.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { ListLivraisonsComponent } from './list-livraisons/list-livraisons.compo
   declarations: [
     ConnexionPage,
     LoginComponent,
-    ListLivraisonsComponent
+    ListLivraisonsComponent,
+    DetailLivraisonComponent
    
   ],
   exports: [
