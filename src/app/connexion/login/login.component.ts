@@ -62,7 +62,7 @@ export class LoginComponent implements OnInit {
         console.log(this.email.value);
         await loading.dismiss();  
               
-        this.router.navigateByUrl('catalogue', { replaceUrl: true });
+        // this.router.navigateByUrl('catalogue', { replaceUrl: true });
       },
       async (res) => {
         await loading.dismiss();
