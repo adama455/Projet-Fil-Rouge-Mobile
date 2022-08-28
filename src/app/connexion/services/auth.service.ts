@@ -8,7 +8,7 @@ import { AlertController, Platform } from '@ionic/angular';
 import jwt_decode from 'jwt-decode';
 
 // import { Storage } from '@capacitor/storage';
-import { map, tap, switchMap } from 'rxjs/operators';
+// import { map, tap, switchMap } from 'rxjs/operators';
 
 const TOKEN_KEY = 'jwt-token';
 
@@ -24,7 +24,7 @@ export class AuthService {
 
   url = 'http://127.0.0.1:8000/api/login';
   user_url = 'http://127.0.0.1:8000/api/users';
-  livraison_url = 'http://127.0.0.1:8000/api/livraisons';
+  livraison_url = 'http://127.0.0.1:8000/api/livraisons/';
   utiliateur: any;
 
   // Init with null to filter out the first value in a guard!
@@ -92,12 +92,18 @@ export class AuthService {
     return this.getDecodedAccessToken(this.tokenUser);
     // return this.token;
   }
-  
-  getUser(login:any){
-    return this.http.get(this.user_url + '?login=' + login);
+  getRoleUserConnect(){
+    return this.getDecodedAccessToken(JSON.stringify(this.tokenUser)).roles;
   }
+  
+  // getUser(login:any){
+  //   return this.http.get(this.user_url + '?login=' + login);
+  // }
   getLivraisonsObs():Observable<any>{
     return this.http.get<any>(this.livraison_url);
+  }
+  getOneLivraisonsObs(id:number):Observable<any>{
+    return this.http.get<any>(this.livraison_url+id);
   }
 
 
@@ -110,19 +116,20 @@ export class AuthService {
   login(user: any) {
     return this.http.post<any>(this.url, user).subscribe(async (token) => {
       // console.log(JSON.stringify(token.token));
-      let rolesUser = this.getDecodedAccessToken(JSON.stringify(token)).roles; //recuperation du role de l'utilisateur
-      this.tokenUser = JSON.stringify(token.token); //recuperation du role de l'utilisateur
+      this.rolesUser = this.getDecodedAccessToken(JSON.stringify(token)).roles; //recuperation du role de l'utilisateur
+      this.tokenUser = JSON.stringify(token.token); //recuperation du token de l'utilisateur
+      localStorage.setItem('token',token)
       // console.log(this.tokenUser);
-      if (rolesUser[0] == 'ROLE_GESTIONNAIRE') {
+      if (this.rolesUser[0] == 'ROLE_GESTIONNAIRE') {
         //redirection admin
         const alert = await this.alertCtrl.create({
-          header: 'not connect',
-          message: 'un gestionnaire ne doit pas se connecter!.',
-          buttons: ['OK']
+          header: 'vous etes admin',
+          message: "vous n'etes pas autoriser à se connecter",
+          buttons: ['OK'],
         });
         await alert.present();
 
-      } else if (rolesUser[0] == 'ROLE_CLIENT') {
+      } else if (this.rolesUser[0] == 'ROLE_CLIENT') {
         //redirection client
         this.router.navigateByUrl('catalogue');
       } else {

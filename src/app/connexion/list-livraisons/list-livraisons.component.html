@@ -1,12 +1,21 @@
 <div class="bar bar-header bar-positive">
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+
   <h1 class="title ion-text-center" >Mes livraisons</h1>
 </div>
 <ion-content>
+  <ion-searchbar placeholder="Search" ></ion-searchbar>
   <ion-list inset="false"  class="list ion-padding" *ngFor="let mesLiv of livraisonLivreur; let i=index">
     <ion-item button detail lines="full" (click)="detailLivraison(mesLiv)">
       <ion-label >
         <h3> Livraison N°: <em> {{mesLiv.numero}}</em></h3>
-        <p>Listen, I've had a pretty messed up day...</p>
+        <p>{{mesLiv.etat}}</p>
       </ion-label>
   
     </ion-item>

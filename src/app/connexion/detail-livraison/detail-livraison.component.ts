@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -8,27 +9,39 @@ import { AuthService } from '../services/auth.service';
   styleUrls: ['./detail-livraison.component.scss'],
 })
 export class DetailLivraisonComponent implements OnInit {
+  // livraisonLivreur:any[]=[]
+  oneLiv: any;
+  commandesLiv: any[];
+  id: number = +this.route.snapshot.params['id'];
 
-  livreur:any
-  livraisons:any[]
-  livraisonLivreur:any[]=[]
-  commandesLiv:any[]
-  emailLivreurConnect:any=this.authService.getToken().username;
-  constructor(private authService:AuthService, private router:Router) { }
+  constructor(
+    private authService: AuthService,
+    private route: ActivatedRoute,
+    private alertController: AlertController
+  ) {}
 
   ngOnInit() {
-    this.authService.getLivraisonsObs().subscribe(livraison=>{
-      console.log(livraison);
-      this.livraisons=livraison;
-      this.livraisons.forEach((oneLiv:any)=>{
-        // console.log(this.emailLivreurConnect);
-        this.commandesLiv=oneLiv.commandes;
-        console.log(this.commandesLiv);
-        
-          
-        })
-      
-    })
+    this.authService.getOneLivraisonsObs(this.id).subscribe((livraison) => {
+      this.oneLiv = livraison;
+      console.log(this.oneLiv);
+      this.commandesLiv = this.oneLiv.commandes;
+      console.log(this.commandesLiv);
+      // this.livraison=oneLiv;
+    });
   }
-    
+  async presentAlert() {
+    const alert = await this.alertController.create({
+      header: 'Entrer votre code svp!',
+      buttons: ['OK'],
+      inputs: [
+        {
+          type: 'number',
+          placeholder: '0148',
+        }
+      ],
+    });
+
+    await alert.present();
+  }
+
 }

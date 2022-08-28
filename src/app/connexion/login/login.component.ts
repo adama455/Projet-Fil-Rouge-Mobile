@@ -36,32 +36,32 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() {}
 
-  async login() {
-    const loading = await this.loadingController.create();
-    await loading.present();
-    if (!this.myForm.valid) {
-      await loading.dismiss();
-      const alert = await this.alertCtrl.create({
-        header: 'Login failed',
-        message: 'vous etes admin',
-        buttons: ['OK'],
-      });
-      await alert.present();
-    } else {
-      this.authService.login(this.myForm.value);
-      await loading.dismiss();
-    }
-  }
+  // async login() {
+  //   const loading = await this.loadingController.create();
+  //   await loading.present();
+  //   if (!this.myForm.valid) {
+  //     await loading.dismiss();
+  //     const alert = await this.alertCtrl.create({
+  //       header: 'Login failed',
+  //       message: 'vous etes admin',
+  //       buttons: ['OK'],
+  //     });
+  //     await alert.present();
+  //   } else {
+  //     this.authService.login(this.myForm.value);
+  //     await loading.dismiss();
+  //   }
+  // }
 
   // async loginn() {
   //   const loading = await this.loadingController.create();
   //   await loading.present();
-    
+
   //   this.authService.login(this.myForm.value).subscribe(
   //     async (res) => {
   //       console.log(this.email.value);
-  //       await loading.dismiss();  
-              
+  //       await loading.dismiss();
+
   //       // this.router.navigateByUrl('catalogue', { replaceUrl: true });
   //     },
   //     async (res) => {
@@ -71,7 +71,7 @@ export class LoginComponent implements OnInit {
   //         message: res.error.error,
   //         buttons: ['OK'],
   //       });
- 
+
   //       await alert.present();
   //     }
   //   );
@@ -82,12 +82,10 @@ export class LoginComponent implements OnInit {
   get email() {
     return this.myForm.get('login');
   }
-  
+
   get password() {
     return this.myForm.get('password');
   }
-
-
 
   // login() {
   //   this.authService.login(this.myForm.value).subscribe(async res => {
@@ -157,13 +155,17 @@ export class LoginComponent implements OnInit {
   //   await alert.present();
   // }
   async submitForm() {
+    const loading = await this.loadingController.create({duration: 5000});
+    await loading.present();
     this.isSubmitted = true;
     if (!this.myForm.valid) {
+      await loading.dismiss();
       console.log('Please provide all the required values!');
       return false;
     } else {
       console.log(this.myForm.value);
       this.authService.login(this.myForm.value);
+      await loading.dismiss();
     }
   }
 

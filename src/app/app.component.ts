@@ -10,17 +10,22 @@ import { AuthService } from './connexion/services/auth.service';
 export class AppComponent {
 
   user = null;
-
+  clientConnect:any;
+  roleUser: any;
   constructor(private authService: AuthService,private router: Router) {}
-
+  
   complement(e:any){
     console.log(e);
   }
-
- 
-  async logout() {
-    await this.authService.logout();
-    this.router.navigateByUrl('/', { replaceUrl: true });
+  
+  userConnect(){
+    this.roleUser = this.authService.getRoleUserConnect();
+    return this.roleUser[0] == 'ROLE_CLIENT'
   }
+ 
+  // async logout() {
+  //   await this.authService.logout();
+  //   this.router.navigateByUrl('/', { replaceUrl: true });
+  // }
 
 }

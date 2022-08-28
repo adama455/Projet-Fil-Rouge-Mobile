@@ -1,15 +1,45 @@
+<ion-app>
 <div class="bar bar-header bar-positive">
-  <h1 class="title ion-text-center" >Commandes de la livraison</h1>
+  <ion-toolbar color="light" class="ion-d-flex">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="2">
+        <ion-back-button text="" defaultHref="livraison" class=""></ion-back-button>
+      </ion-col>
+      <ion-col>
+        <h4 class="title ion-text-center" >Commandes de la livraison </h4>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
 </div>
-<ion-content>
-  <ion-list inset="false"  class="list ion-padding" *ngFor="let commande of commandesLiv; let i=index">
-    <ion-item button detail lines="full">
-      <ion-label >
-        <h3> Client: <em> {{commande.client.nom}} {{commande.client.prenom}}</em></h3>
-        <h3> Montant: <em> {{commande.montantCommande}}</em></h3>
-        <p>{{commande.DateCmde}}</p>
+
+<ion-content class="ion-padding-0">
+  <!-- Sliding item with icon end options on end side -->
+  <ion-item-sliding *ngFor="let commande of commandesLiv">
+  <ion-item>
+    <ion-label>
+        <ion-list inset="false"  class="list ">
+          <ion-item button detail lines="none">
+            <ion-label >
+              <h3> Commande: <em> {{commande.reference}}</em></h3>
+              <h3> Client: <em> {{commande.client.nom}} {{commande.client.prenom}}</em></h3>
+              <p>{{commande.client.telephone}}</p>
+            </ion-label>
+            <h5 class=""><em> {{commande.montantCommande}} <small>FCFA</small></em></h5>
+          </ion-item>
+        </ion-list>
       </ion-label>
-  
     </ion-item>
-  </ion-list>
+    <ion-item-options>
+      <ion-item-option color="primary">
+        <ion-icon name="scan-outline"></ion-icon>
+        Scaner
+      </ion-item-option>
+      <ion-item-option color="secondary" (click)="presentAlert()" >
+        <ion-icon name="qr-code-outline"></ion-icon>
+        Code
+      </ion-item-option>
+    </ion-item-options>
+  </ion-item-sliding>
+ 
 </ion-content>
+</ion-app>
