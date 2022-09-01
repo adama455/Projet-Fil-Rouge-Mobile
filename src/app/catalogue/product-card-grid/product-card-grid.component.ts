@@ -21,9 +21,9 @@ export class ProductCardGridComponent implements OnInit {
     return this.data.convertImg(url)
   }
   // routing: fonction pour naviger vers detail
-  showDetails(){
+  showDetails(produit:any){
     // alert("ok");
-    this.route.navigateByUrl(`produit/${this.produit.id}`)
+    this.route.navigateByUrl("produit/" +produit.id)
   }
   
   showCart(product:any){

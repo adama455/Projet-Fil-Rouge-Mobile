@@ -33,3 +33,71 @@
 
     }
     
+.card{
+    max-width: 70%;
+    padding: 1.6rem 2rem;
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius:2.5rem ;
+    margin-bottom: 1.5rem;
+    margin-top: 2rem;
+    
+    
+}
+.card img{
+    cursor: pointer;
+    width: 70%;
+    height: 70%;
+  
+
+}
+.card-content{
+    text-align: center;
+
+}
+.title{
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 0.2rem;
+    color: #1d1d1d;
+}
+.subtitle{
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffb800;
+    margin-top: 0;
+    margin-bottom: 1.8rem;
+
+}
+sup{
+    font: 1rem;
+    margin-right: 2px;
+}
+
+ion-buttons{
+    position: absolute;
+    bottom: -1rem;
+    left: 50%;
+    transform: translateX(-50%);
+
+    
+}
+ion-button{
+    background-color:#6b45bc;
+    font-weight: 700;
+    color: #fff ;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+
+
+    --padding-start:0 ;
+    --padding-end:0 ;
+    --padding-top:0 ;
+    --padding-bottom:0 ;
+}

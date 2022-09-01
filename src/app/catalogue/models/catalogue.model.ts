@@ -10,6 +10,19 @@ export interface IMenu{
     quantity:number,
 }
 
+export interface Produit {
+    id?:number
+    nom?:string
+    image?:Blob
+    prix?:number
+    type?:string
+}
+export interface Catalogue {
+    burgers: Produit[]
+    menus: Produit[]
+    produits?: Produit[]
+}
+
 export interface ICatalogue{
     burgers:IBurger[],
     menus:IMenu[],
@@ -59,4 +72,8 @@ export interface IBurger{
     description: string,
     prix:number,
     quantity:number
+}
+export interface ChoixBoisson{
+    qteTotal:number,
+    somQte:number
 }

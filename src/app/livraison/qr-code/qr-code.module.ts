@@ -4,17 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { MainMenuPageRoutingModule } from './main-menu-routing.module';
+import { QRCodeModule } from 'angularx-qrcode';
+import { QrCodePage } from './qr-code.page';
 
-import { MainMenuPage } from './main-menu.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    MainMenuPageRoutingModule
+    QRCodeModule,
+
   ],
-  declarations: [MainMenuPage]
+  declarations: [QrCodePage]
 })
-export class MainMenuPageModule {}
+export class QrCodePageModule {}

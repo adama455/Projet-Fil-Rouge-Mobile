@@ -11,7 +11,6 @@ import { CataloguePageRoutingModule } from './catalogue-routing.module';
 import { CataloguePage } from './catalogue.page';
 import { HttpClientModule } from '@angular/common/http';
 import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
-import { MainMenuPage } from '../main-menu/main-menu.page';
 import { DetailProductComponent } from './detail-product/detail-product.component';
 
 @NgModule({
@@ -30,7 +29,6 @@ import { DetailProductComponent } from './detail-product/detail-product.componen
     ProductCardListComponent,
     ProductCardGridComponent ,
     DetailProductComponent,
-    MainMenuPage
   ]
 })
 export class CataloguePageModule {}

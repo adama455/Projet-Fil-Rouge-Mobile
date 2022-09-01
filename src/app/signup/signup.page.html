@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="back" defaultHref="login"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-card>
+  
+  <ng-container>
+    <ion-img src="https://freepngimg.com/thumb/burger%20sandwich/4-hamburger-burger-png-image.png" height="10">
+    </ion-img>
+  </ng-container>
+  
+  <ion-card-title class="ion-text-center">
+   <h1>Register</h1> 
+  </ion-card-title>
+  <ion-card-content>
+    <form [formGroup]="myForm" >
+      <ion-item lines="full">
+        <ion-label position="floating">Nom</ion-label>
+        <ion-input type="text" formControlName="nom" ></ion-input>
+      </ion-item>
+      <!--<small class="error ion-padding" *ngIf="isSubmitted && errorControl.login.errors?.required">
+    Email is required.
+    </small>
+    <small class="error ion-padding" *ngIf="isSubmitted && errorControl.login.errors?.pattern">
+      Please provide valid email id.
+    </small>-->
+      <ion-item lines="full">
+        <ion-label position="floating">Prenom</ion-label>
+        <ion-input type="text" formControlName="prenom" ></ion-input>
+      </ion-item>
+      <!--<small class="error ion-padding" *ngIf="isSubmitted && errorControl.login.errors?.required">
+    Email is required.
+    </small>
+    <small class="error ion-padding" *ngIf="isSubmitted && errorControl.login.errors?.pattern">
+      Please provide valid email id.
+    </small>-->
+      <ion-item lines="full">
+        <ion-label position="floating">Login</ion-label>
+        <ion-input type="email" formControlName="email"></ion-input>
+      </ion-item>
+      <!--<small class="error ion-padding" *ngIf="isSubmitted && errorControl.login.errors?.required">
+    Email is required.
+    </small>
+    <small class="error ion-padding" *ngIf="isSubmitted && errorControl.login.errors?.pattern">
+      Please provide valid email id.
+    </small>-->
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <!-- Error messages -->
+      <!--<small class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      Password is required.
+    </small>
+    <small class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+      Password should be min 6 chars long.
+    </small>-->
+      <ion-item lines="full">
+        <ion-label position="floating">Adresse</ion-label>
+        <ion-input type="text" formControlName="adresse"></ion-input>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Telephone</ion-label>
+        <ion-input type="text" formControlName="telephone"></ion-input>
+      </ion-item>
+      <!--<small class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      Password is required.
+    </small>
+    <small class="error ion-padding" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+      Password should be min 6 chars long.
+    </small>-->
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" (click)="" class="all" expand="block">S'inscrire</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-card-content>
+</ion-card>

@@ -1,0 +1,32 @@
+<ng-container>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+    </ion-toolbar>
+  </ion-header>
+</ng-container>
+
+<ng-container>
+  <h1 class="title ion-text-center" >Mes Commandes:</h1>
+</ng-container>
+
+<ion-content>
+  <ng-container *ngIf="oneCmd==undefined">
+    <app-loader></app-loader>
+  </ng-container>
+  <ng-container *ngIf="oneCmd!=undefined">
+    <ion-searchbar placeholder="Search" ></ion-searchbar>
+    <ion-list inset="false"  class="list ion-padding" *ngFor="let mesCmd of mesCommandes; let i=index">
+      <ion-item button detail lines="full" (click)="detailCommande(mesCmd)">
+        <ion-label >
+          <h2> <em> {{mesCmd.dateCmde | date}}</em></h2>
+          <h3> Reference: <em> {{mesCmd.reference}}</em></h3>
+          <p>{{mesCmd.etat}}</p>
+        </ion-label>
+    
+      </ion-item>
+    </ion-list>
+  </ng-container>
+  </ion-content>

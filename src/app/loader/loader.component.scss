@@ -1,0 +1,12 @@
+.spinner-2 {
+    width: 20%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 8px solid lightblue;
+    border-right-color: orange;
+    animation: s2 1s infinite linear;
+    position: absolute;
+    top: 45%;
+    left: 40%;
+  }
+  @keyframes s2 {to{transform: rotate(1turn)}}

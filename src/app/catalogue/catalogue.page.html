@@ -29,22 +29,38 @@
         </ion-segment-button>
       </ion-segment>
     </div>
+    <!--..............Filtre..................-->
 
-    <div class="contenent" *ngIf="valueSegment!=='list'">
+    <ion-segment>
+      <ion-segment-button  (click)="filterProduct('burger')" value="burger">
+        <ion-label>Burger</ion-label>
+      </ion-segment-button>
+      <ion-segment-button  (click)="filterProduct('menu')" value="menu">
+        <ion-label>Menu</ion-label>
+      </ion-segment-button>
+      <ion-segment-button (click)="presentAlert()" value="prix">
+        <ion-label>Prix</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+    <!--..............Fin Filtre..................-->
 
-      <h2 class="burger">MES BURGERS:</h2>
-      <div class="row d-flex g-5">
-        <app-product-card-grid *ngFor="let burger of burgers " [produit]="burger" class="col col-sm-4 col-md-3">
+    <div class="contenent " *ngIf="valueSegment!=='list'">
+
+      <h2 class="burger list-header">MES BURGERS:</h2>
+   
+      <div class="list">
+        <app-product-card-grid *ngFor="let burger of burgers " [produit]="burger">
         </app-product-card-grid>
       </div>
-      <h2 class="menu">MES MENUS:</h2>
-      <div class="row d-flex g-5">
-        <app-product-card-grid *ngFor="let menu of menus " [produit]="menu" class="col col-sm-4 col-md-3">
+      
+      <h2 class="menu list-header">MES MENUS:</h2>
+      <div class="list">
+        <app-product-card-grid *ngFor="let menu of menus " [produit]="menu" >
         </app-product-card-grid>
       </div>
     </div>
 
-    <div class="contenent" *ngIf="valueSegment==='list'">
+    <div class="contenent ion-padding" *ngIf="valueSegment==='list'">
       <h2 class="burger">MES BURGERS:</h2>
       <div class=" bb">
         <app-product-card-list *ngFor="let burger of burgers " [catalogue]="burger" class="burger-list">
@@ -58,5 +74,32 @@
       </div>
 
     </div>
+    
+    
+    <!---------------------2Em Methode pour catalogue----------------------------------->
+
+    <!--<ng-container *ngFor="let catalogue of catalogues">
+      <ion-card>
+        <ion-card-header>
+          <ion-card-subtitle><ion-icon class="all" name="pricetags-outline"></ion-icon>{{catalogue.prix}} fcfa</ion-card-subtitle>
+          <ion-card-title>{{catalogue.nom}}</ion-card-title>
+        </ion-card-header>
+      
+        <ion-card-content>
+          <img [src]="convert(catalogue.image)"  height="220">
+        </ion-card-content>
+
+        <div class=" btn-card w-100">
+          <a class="btn panier col-3 " *ngIf="catalogue.nom.substr(0,1)==='B'" (click)="showCart(catalogue)">
+            <ion-icon name="cart-outline" style="font-size: 2rem;"></ion-icon>
+          </a>
+          <a (click)="showDetails(catalogue)">
+            <ion-button class="all"><ion-icon name="information-circle-outline"></ion-icon>
+              </ion-button>
+          </a>
+        </div>
+      </ion-card>
+    </ng-container>
   </ion-content>
-  </ion-content>
+  </ion-content>-->
+

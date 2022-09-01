@@ -10,6 +10,8 @@ import { ConnexionPage } from './connexion.page';
 import { LoginComponent } from './login/login.component';
 import { ListLivraisonsComponent } from './list-livraisons/list-livraisons.component';
 import { DetailLivraisonComponent } from './detail-livraison/detail-livraison.component';
+import { QRCodeModule } from 'angularx-qrcode';
+import { LoaderComponent } from '../loader/loader.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,13 +19,14 @@ import { DetailLivraisonComponent } from './detail-livraison/detail-livraison.co
     ConnexionPageRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    QRCodeModule,
   ],
   declarations: [
     ConnexionPage,
     LoginComponent,
     ListLivraisonsComponent,
-    DetailLivraisonComponent
-   
+    DetailLivraisonComponent,
+    LoaderComponent
   ],
   exports: [
     LoginComponent

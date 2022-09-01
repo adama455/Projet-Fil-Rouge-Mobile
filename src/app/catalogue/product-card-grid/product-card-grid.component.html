@@ -1,22 +1,35 @@
-<ion-card>
+<!--<ion-card>
   <div class="card-grid">
     <ion-card-subtitle class="nom">{{produit.nom}}</ion-card-subtitle>
-    <div class="image" (click)="showDetails()">
-      <img [src]="convert(produit.image)" height="220"  />
+    <div class="image" (click)="showDetails(produit)">
+      <img [src]="convert(produit.image)" height="220" />
     </div>
-    
-      <ion-card-content class="prix">
-        <p><em>Prix:</em> </p>
-        <ion-card-subtitle style="font-size: 1.5rem; margin-left: 2rem">{{produit.prix}}</ion-card-subtitle>
-      </ion-card-content>
-    
-    
-      <div class=" btn-card w-100" >
-        <a class="btn panier col-3 "  *ngIf="produit.nom.substr(0,1)==='B'" (click)="showCart(produit)">
-          <ion-icon name="cart-outline" style="font-size: 2rem;"></ion-icon>
-        </a>
-        <ion-button (click)="showDetails()" >Detail</ion-button>
-      </div>
-  
+
+    <ion-card-content class="prix">
+      <p><em>Prix:</em> </p>
+      <ion-card-subtitle style="font-size: 1.5rem; margin-left: 2rem">{{produit.prix}}</ion-card-subtitle>
+    </ion-card-content>
+
+
+    <div class=" btn-card w-100">
+      <a class="btn panier col-3 " *ngIf="produit.nom.substr(0,1)==='B'" (click)="showCart(produit)">
+        <ion-icon name="cart-outline" style="font-size: 2rem;"></ion-icon>
+      </a>
+      <ion-button (click)="showDetails(produit)">Detail</ion-button>
+    </div>
+
   </div>
-</ion-card>
+</ion-card>-->
+
+<div class="card">
+  <img [src]="convert(produit?.image)" (click)="showDetails(produit)">
+  <div class="card-content">
+    <h3 class="title">{{produit.nom}}</h3>
+    <h2 class="subtitle"> <sup>$</sup>{{produit.prix | number:'1.2'}} </h2>
+    <ion-buttons>
+      <ion-button>
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </div>
+</div>

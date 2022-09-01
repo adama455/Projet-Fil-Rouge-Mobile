@@ -11,10 +11,12 @@ import { IonicHeaderParallaxModule } from 'ionic-header-parallax';
 import { FooterComponent } from './composants/footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicStorageModule } from '@ionic/storage-angular';
+import { MenuComponent } from './menu/menu.component';
 @NgModule({
   declarations: [
     AppComponent,
     FooterComponent,
+    MenuComponent
   ],
   imports: [
     BrowserModule, 
@@ -24,7 +26,7 @@ import { IonicStorageModule } from '@ionic/storage-angular';
     IonicHeaderParallaxModule,
     FormsModule,
     ReactiveFormsModule,
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],

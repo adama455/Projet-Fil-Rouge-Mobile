@@ -37,22 +37,36 @@ const routes: Routes = [
     path: 'connexion',
     loadChildren: () => import('./connexion/connexion.module').then( m => m.ConnexionPageModule)
   },
+  // {
+  //   path: 'livraison',
+  //   component: ListLivraisonsComponent,
+  //   // canActivate: [AuthGuard],
+  // },
   {
     path: 'livraison',
-    component: ListLivraisonsComponent,
-    // canLoad: [AuthGuard],
+    loadChildren: () => import('./livraison/livraison.module').then( m => m.LivraisonPageModule)
   },
   {
     path: 'livraison/:id',
     component: DetailLivraisonComponent,
-    // canLoad: [AuthGuard],
   },
   {
-    path: 'main-menu',
-    loadChildren: () => import('./main-menu/main-menu.module').then( m => m.MainMenuPageModule)
+    path: 'test',
+    loadChildren: () => import('./test/test.module').then( m => m.TestPageModule)
+  },
+  {
+    path: 'signup',
+    loadChildren: () => import('./signup/signup.module').then( m => m.SignupPageModule)
+  },
+  {
+    path: 'commandes',
+    loadChildren: () => import('./commandes/commandes.module').then( m => m.CommandesPageModule)
+  },
+  {
+    path: 'footer',
+    loadChildren: () => import('./footer/footer.module').then( m => m.FooterPageModule)
   },
   
-
 ];
 
 @NgModule({

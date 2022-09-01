@@ -1,0 +1,54 @@
+<ion-content>
+<ion-menu side="start" menuId="mainMenu" contentId="main">
+  <ion-header>
+    <ion-toolbar class="tahir-button">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item routerLink="catalogue">
+          <ion-icon name="home"></ion-icon>
+          <ion-label>Accueil</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+     <ng-container>
+      
+      <ion-menu-toggle>
+        <ion-item routerLink="catalogue" >
+          <ion-icon name="pricetags-sharp"></ion-icon>
+          <ion-label>Nos Menus</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item routerLink="catalogue" >
+          <ion-icon name="cart-sharp"></ion-icon>
+          <ion-label>Nos Burgers</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+     </ng-container>
+     <ng-container >
+         <ion-menu-toggle>
+        <ion-item routerLink="complement">
+          <ion-icon name="car-outline"></ion-icon>
+          <ion-label>Nos Complements</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+     </ng-container>
+      <ion-menu-toggle>
+        <ion-item routerLink="" >
+          <ion-icon name="log-in"></ion-icon>
+          <ion-label>Mon profil</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item>
+          <ion-icon name="log-out"></ion-icon>
+          <ion-label>Deconnexion</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+</ion-content>

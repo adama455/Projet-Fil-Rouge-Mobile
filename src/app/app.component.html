@@ -8,16 +8,16 @@
     <ion-content>
       <ion-list lines="none">
         <!-- <ion-menu-toggle auto-hide="true"> -->
-        <ion-item routerLink="/tabs/tab1" routerDirection="forward">
+        <ion-item routerDirection="forward">
           <ion-label>Nos Menus</ion-label>
         </ion-item>
-        <ion-item routerLink="/tabs/tab2" routerDirection="forward">
+        <ion-item routerDirection="forward">
           <ion-label>
             <Nav>Nos Burgers</Nav>
           </ion-label>
         </ion-item>
-        <ion-item routerLink="/tabs/tab3" routerDirection="forward" >
-          <ion-label (ionChange)="complement($event)" >
+        <ion-item  routerDirection="forward" >
+          <ion-label  >
             Nos Complements
             <div>
               <ion-item>
@@ -30,14 +30,14 @@
 
           </ion-label>
         </ion-item>
-        <ion-item routerLink="/tabs/tab2" routerDirection="forward">
+        <ion-item routerDirection="forward">
           <ion-label>
             <Nav>Mon profil</Nav>
           </ion-label>
         </ion-item>
-        <ion-item >
+        <ion-item (click)="logout()" >
           <ion-label>
-            Deconnexion
+            Déconnexion
           </ion-label>
         </ion-item>
         <!-- </ion-menu-toggle> -->

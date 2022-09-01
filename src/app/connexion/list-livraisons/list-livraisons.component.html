@@ -1,4 +1,5 @@
-<div class="bar bar-header bar-positive">
+<ng-container>
+
   <ion-header>
     <ion-toolbar>
       <ion-buttons slot="start">
@@ -6,10 +7,27 @@
       </ion-buttons>
     </ion-toolbar>
   </ion-header>
+</ng-container>
 
-  <h1 class="title ion-text-center" >Mes livraisons</h1>
-</div>
+<!--<div class="bar bar-header bar-positive">
+  <div class="bar bar-header bar-positive">
+  
+    <h1 class="title ion-text-center" >Mes livraisons</h1>
+  </div>
+<ion-header>
+  <ion-toolbar class="ion-header">
+    <ion-title>Livreur</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button  menu="mainMenu"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+</div>-->
 <ion-content>
+<ng-container *ngIf="onLiv==undefined">
+  <app-loader></app-loader>
+</ng-container>
+<ng-container *ngIf="onLiv!=undefined">
   <ion-searchbar placeholder="Search" ></ion-searchbar>
   <ion-list inset="false"  class="list ion-padding" *ngFor="let mesLiv of livraisonLivreur; let i=index">
     <ion-item button detail lines="full" (click)="detailLivraison(mesLiv)">
@@ -20,4 +38,5 @@
   
     </ion-item>
   </ion-list>
+</ng-container>
 </ion-content>

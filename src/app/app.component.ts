@@ -8,24 +8,28 @@ import { AuthService } from './connexion/services/auth.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-
   user = null;
-  clientConnect:any;
-  roleUser: any;
-  constructor(private authService: AuthService,private router: Router) {}
+  client:any;
+  constructor(private authService: AuthService, private router: Router) {}
   
-  complement(e:any){
+  complement(e: any) {
     console.log(e);
   }
-  
-  userConnect(){
-    this.roleUser = this.authService.getRoleUserConnect();
-    return this.roleUser[0] == 'ROLE_CLIENT'
-  }
- 
-  // async logout() {
-  //   await this.authService.logout();
-  //   this.router.navigateByUrl('/', { replaceUrl: true });
-  // }
+  isClient=this.authService.roleClient;
 
+  
+  clientConnect():any{
+    // console.log(this.isClient==="ROLE_CLIENT")
+    if (this.isClient=="ROLE_CLIENT") {
+      
+    }
+    // console.log(this.authService.getRole());
+  }
+  
+  
+  
+  logout() {
+    console.log(this.isClient==='ROLE_CLIENT')
+    return this.authService.logout();
+  }
 }

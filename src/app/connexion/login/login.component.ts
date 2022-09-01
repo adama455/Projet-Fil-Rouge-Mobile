@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { AlertController, LoadingController } from '@ionic/angular';
+import { AlertController, LoadingController, ToastController } from '@ionic/angular';
+import { ICredential } from '../model/connexion-model';
 import { AuthService } from '../services/auth.service';
+import { StorageService } from '../services/storage.service';
+import { TokenService } from '../services/token.service';
+import jwt_decode from "jwt-decode";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,6 +20,7 @@ export class LoginComponent implements OnInit {
   //   "login":'',
   //   "password":'',
   // }
+  
   myForm = new FormGroup({
     login: new FormControl('', [
       Validators.required,
@@ -26,134 +32,30 @@ export class LoginComponent implements OnInit {
     ]),
   });
 
+  form:ICredential={
+    login:'',
+    password:''
+  }
+  token:any
+
   redirectCata: void;
   constructor(
     private alertCtrl: AlertController,
     private router: Router,
     private authService: AuthService,
-    private loadingController: LoadingController
+    private loadingController: LoadingController,
+    public toastController: ToastController,
+    private storage: StorageService,
+    private tokenServ : TokenService
   ) {}
 
   ngOnInit() {}
 
-  // async login() {
-  //   const loading = await this.loadingController.create();
-  //   await loading.present();
-  //   if (!this.myForm.valid) {
-  //     await loading.dismiss();
-  //     const alert = await this.alertCtrl.create({
-  //       header: 'Login failed',
-  //       message: 'vous etes admin',
-  //       buttons: ['OK'],
-  //     });
-  //     await alert.present();
-  //   } else {
-  //     this.authService.login(this.myForm.value);
-  //     await loading.dismiss();
-  //   }
-  // }
-
-  // async loginn() {
-  //   const loading = await this.loadingController.create();
-  //   await loading.present();
-
-  //   this.authService.login(this.myForm.value).subscribe(
-  //     async (res) => {
-  //       console.log(this.email.value);
-  //       await loading.dismiss();
-
-  //       // this.router.navigateByUrl('catalogue', { replaceUrl: true });
-  //     },
-  //     async (res) => {
-  //       await loading.dismiss();
-  //       const alert = await this.alertCtrl.create({
-  //         header: 'Login failed',
-  //         message: res.error.error,
-  //         buttons: ['OK'],
-  //       });
-
-  //       await alert.present();
-  //     }
-  //   );
-
-  // }
-
-  // Easy access for form fields
-  get email() {
-    return this.myForm.get('login');
-  }
 
   get password() {
     return this.myForm.get('password');
   }
 
-  // login() {
-  //   this.authService.login(this.myForm.value).subscribe(async res => {
-  //     if (res) {
-  //       this.router.navigateByUrl('catalogue');
-  //     } else {
-  //       const alert = await this.alertCtrl.create({
-  //         header: 'Login Failed',
-  //         message: 'Wrong credentials.',
-  //         buttons: ['OK']
-  //       });
-  //       await alert.present();
-  //     }
-  //   });
-  // }
-
-  // login() {
-  //   this.authService.login(this.myForm.value).subscribe(async res => {
-  //     if (res) {
-  //       this.router.navigateByUrl('catalogue');
-  //     } else {
-  //       const alert = await this.alertCtrl.create({
-  //         header: 'Login Failed',
-  //         message: 'Wrong credentials.',
-  //         buttons: ['OK']
-  //       });
-  //       await alert.present();
-  //     }
-  //   });
-  // }
-
-  // async presentPrompt() {
-  //   let alert = await this.alertCtrl.create({
-  //     message: 'Login',
-  //     inputs: [
-  //       {
-  //         name: 'username',
-  //         placeholder: 'Username'
-  //       },
-  //       {
-  //         name: 'password',
-  //         placeholder: 'Password',
-  //         type: 'password'
-  //       }
-  //     ],
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         role: 'cancel',
-  //         handler: data => {
-  //           console.log('Cancel clicked');
-  //         }
-  //       },
-  //       {
-  //         text: 'Login',
-  //         handler: data => {
-  //           if (this.myForm.valid) {
-  //             // logged in!
-  //           } else {
-  //             // invalid login
-  //             return false;
-  //           }
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   await alert.present();
-  // }
   async submitForm() {
     const loading = await this.loadingController.create({duration: 5000});
     await loading.present();
@@ -170,12 +72,44 @@ export class LoginComponent implements OnInit {
   }
 
   // méthode getter pour accéder au contrôle du formulaire
-
   get errorControl() {
     return this.myForm.controls;
   }
+// .......................................................................
 
-  // navigMenu() {
-  //   this.router.navigateByUrl('catalogue');
-  // }
+  // ....................Connexion Méthode 2..............................
+  onSubmit(): void{
+    this.authService.loginn(this.form).subscribe(
+    data=>{
+      this.tokenServ.saveToken(data.token,data.id)
+        var tokenI:string  = data.token;
+        var decoded: any = jwt_decode(tokenI);
+        console.log(decoded.roles[0]);
+        console.log(decoded.username);
+         if(decoded.roles[0] == ["ROLE_LIVREUR"]){
+            this.router.navigate(['/livraison'])
+        }
+        else{
+          this.router.navigate(['/commandes'])
+        }
+    },
+    err=>{
+      console.log(err)
+      this.storage.bool.next(true);
+    },
+  )
+}
+
+/* toast */
+async presentToast() {
+  const toast = await this.toastController.create({
+    message: 'Connexion reussie',
+    duration: 2000,
+    color:"success"
+  });
+  toast.present();
+}
+  // ....................Fin Connexion Méthode 2..............................
+
+
 }
